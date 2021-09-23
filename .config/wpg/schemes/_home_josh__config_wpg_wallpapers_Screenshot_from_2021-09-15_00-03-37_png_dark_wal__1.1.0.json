@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/josh/.config/wpg/wallpapers/Screenshot_from_2021-09-15_00-03-37.png",
+    "alpha": "100",
+
+    "special": {
+        "background": "#100f0f",
+        "foreground": "#ffe1d3",
+        "cursor": "#ffe1d3"
+    },
+    "colors": {
+        "color0": "#100f0f",
+        "color1": "#B9492B",
+        "color2": "#594A43",
+        "color3": "#A54630",
+        "color4": "#493F40",
+        "color5": "#72665E",
+        "color6": "#6B5446",
+        "color7": "#bfa89d",
+        "color8": "#292727",
+        "color9": "#ff5628",
+        "color10": "#7d5c4d",
+        "color11": "#e45230",
+        "color12": "#67494c",
+        "color13": "#a1816c",
+        "color14": "#966a4f",
+        "color15": "#ffe1d3"
+    }
+}

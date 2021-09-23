@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/josh/.config/wpg/wallpapers/peakpx.jpg",
+    "alpha": "100",
+
+    "special": {
+        "background": "#11222e",
+        "foreground": "#a8c1ca",
+        "cursor": "#a8c1ca"
+    },
+    "colors": {
+        "color0": "#11222e",
+        "color1": "#9975AB",
+        "color2": "#EC7CB3",
+        "color3": "#B77DC2",
+        "color4": "#D276CC",
+        "color5": "#E56AD0",
+        "color6": "#1A8D9F",
+        "color7": "#a8c1ca",
+        "color8": "#75878d",
+        "color9": "#9975AB",
+        "color10": "#EC7CB3",
+        "color11": "#B77DC2",
+        "color12": "#D276CC",
+        "color13": "#E56AD0",
+        "color14": "#1A8D9F",
+        "color15": "#a8c1ca"
+    }
+}
