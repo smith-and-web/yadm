@@ -1,6 +1,6 @@
 [colors]
-	background = "#698895"
-	foreground = "#97c3d5"
+	background = "#7982a9"
+	foreground = "#010101"
 
 [global]
     ### Display ###
@@ -8,17 +8,17 @@
     monitor = 0
     follow = mouse
 
-    geometry = "540x5-10+60"
+    geometry = "540x5-10+32"
     indicate_hidden = yes
     shrink = yes
     transparency = 0
     notification_height = 0
     separator_height = 3
-    padding = 20
-    horizontal_padding = 20
+    padding = 12
+    horizontal_padding = 12
     frame_width = 3
 
-    frame_color = "#486e8b"
+    frame_color = "#de65ff"
     separator_color = auto
     sort = yes
     idle_threshold = 120
@@ -76,17 +76,17 @@
     context = ctrl+shift+period
 
 [urgency_low]
-    background = "#698895"
-    foreground = "#97c3d5"
+    background = "#7982a9"
+    foreground = "#010101"
     timeout = 10
 
 [urgency_normal]
-    background = "#698895"
-    foreground = "#97c3d5"
+    background = "#7982a9"
+    foreground = "#010101"
     timeout = 10
 
 [urgency_critical]
-    background = "#698895"
-    foreground = "#97c3d5"
-    frame_color = "#592558"
+    background = "#7982a9"
+    foreground = "#010101"
+    frame_color = "#1258af"
     timeout = 0

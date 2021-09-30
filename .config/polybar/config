@@ -1,85 +1,128 @@
+########################
+#### GLOBAL
+########################
+
 [colors]
-background = "${xrdb:background}"
+transparent = "00000000"
 foreground = "${xrdb:foreground}"
+background = "${xrdb:background}"
 primary = "${xrdb:color4}"
 secondary = "${xrdb:color6}"
 alert = "ff0000"
 
-[bar/i3]
-monitor = ${env:MONITOR:}
-width = 33%
-height = 35
-offset-y = 10px
-offset-x = 10px
+[module/glyph-background]
+
+type = custom/text
+content-font = 3
+content-padding = 0
+content-background = ${colors.transparent}
+content-foreground = ${colors.background}
+
+[module/left-end-top-background]
+inherit = module/glyph-background
+content = 
+
+[module/right-end-top-background]
+inherit = module/glyph-background
+content = 
+
+[module/left-end-bottom-background]
+inherit = module/glyph-background
+content = 
+
+[module/right-end-bottom-background]
+inherit = module/glyph-background
+content = 
+
+[module/glyph-secondary]
+type = custom/text
+content-font = 3
+content-padding = 0
+content-background = ${colors.transparent}
+content-foreground = ${colors.secondary}
+
+[module/left-end-top-secondary]
+inherit = module/glyph-secondary
+content = 
+
+[module/right-end-top-secondary]
+inherit = module/glyph-secondary
+content = 
+
+[module/left-end-bottom-secondary]
+inherit = module/glyph-secondary
+content = 
+
+[module/right-end-bottom-secondary]
+inherit = module/glyph-secondary
+content = 
+
+[module/glyph-primary]
+type = custom/text
+content-font = 3
+content-padding = 0
+content-background = ${colors.transparent}
+content-foreground = ${colors.primary}
+
+[module/left-end-top-primary]
+inherit = module/glyph-primary
+content = 
+
+[module/right-end-top-primary]
+inherit = module/glyph-primary
+content = 
+
+[module/left-end-bottom-primary]
+inherit = module/glyph-primary
+content = 
+
+[module/right-end-bottom-primary]
+inherit = module/glyph-primary
+content = 
+
+#######################
+#### TOP BAR
+#######################
+
+[bar/topbar]
+width = 100%
+height = 40
 override-redirect = true
 wm-restack = i3
-background = ${colors.background}
+background = ${colors.transparent}
 foreground = ${colors.foreground}
 cursor-click = pointer
 cursor-scroll = ns-resize
+line-size = 2
 
-padding-right = 1
-
-font-0 = ShureTechMono Nerd Font Mono:antialias=true:size=13;2
-
-modules-left = i3
-
-[bar/util]
-monitor = ${env:MONITOR:}
-width = 33%
-height = 35
-offset-y = 10
-offset-x = 66%:+29px
-background = ${colors.background}
-foreground = ${colors.foreground}
-font-0 = ShureTechMono Nerd Font Mono:antialias=true:size=13;2
+font-0 = ShureTechMono Nerd Font Mono:antialias=true:size=13;3
 font-1 = Weather Icons:size=12;1
-modules-left = weather date
-modules-right = network network-traffic cpu temperature memory
-tray-position=right
+font-2 = ShureTechMono Nerd Font Mono:antialias=true:size=26;6
+
+modules-left = i3 right-end-bottom-background left-end-top-background host right-end-bottom-background
+modules-center = left-end-top-background title right-end-top-background
+modules-right = left-end-bottom-secondary weather right-end-top-secondary left-end-bottom-background date right-end-top-background left-end-bottom-background network right-end-top-background left-end-bottom-primary cpu temperature memory right-end-top-primary left-end-bottom-secondary
+
+tray-position = right
 tray-background = ${colors.secondary}
-override-redirect=true
-wm-restack=i3
-
- 
-[bar/spotify]
-monitor = ${env:MONITOR:}
-padding-right = 0
-padding-left = 0
-width = 33%
-override-redirect = true
-height = 35
-offset-y = 10
-offset-x = 33%
-
-
-font-0 = ShureTechMono Nerd Font Mono:antialias=true:size=13;2
-font-1 = ShureTechMono Nerd Font Mono:antialias=true:size=20;3
-
-bottom = true
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-enable-ipc = true
-modules-left = previous playpause next spotify
-modules-right = bluetooth volume bluetooth-profile
-
-[module/spacer]
-type = custom/text
-content = " "
 
 [module/i3]
 type = internal/i3
 strip-wsnumbers = true
 format = <label-state> <label-mode>
+
 label-mode = %mode%
-
+label-mode-background = ${colors.background}
 label-focused = " %icon% %name% "
-label-focused-foreground = ${colors.background}
-label-focused-background = ${colors.primary}
-
+label-focused-background = ${colors.background}
+label-focused-foreground = ${colors.primary}
+label-focused-underline = ${colors.primary}
 label-unfocused = " %icon% %name% "
+label-unfocused-background = ${colors.background}
+label-urgent = " %icon% %name% "
+label-urgent-background = ${colors.primary}
 label-visible = " %icon% %name% "
+label-visible-background = ${colors.background}
 
 ws-icon-0 = 1: chat;
 ws-icon-1 = 2: mail;
@@ -91,44 +134,51 @@ ws-icon-6 = 7: hfti;
 ws-icon-7 = 8: www;
 ws-icon-8 = 9: misc;
 
-[module/cpu]
-type = internal/cpu
-interval = 1
-label = " cpu: %percentage:2%% "
-label-background = ${colors.primary}
-label-foreground = ${colors.background}
+[module/host]
+type=custom/script
+exec = echo " $(whoami)@$(hostname) "
+format-background = ${colors.background}
+
+[module/title]
+type = internal/xwindow
+format-background = ${colors.background}
+format-padding = 1
 
 [module/network]
 type = internal/network
 interface = enp0s31f6
 interval = 3.0
 format-connected = "<label-connected> "
-label-connected = "Connected"
+format-connected-background = ${colors.background}
+label-connected = " %downspeed:9%     祝%upspeed:9%"
 
 format-disconnected = "<label-disconnected> "
 format-disconnected-foreground = ${colors.primary}
 label-disconnected = " Not Connected"
-unknown-as-up = true
 
-[module/network-traffic]
-type = custom/script
-exec = ~/.config/polybar/scripts/network-traffic.sh
-tail = true
+accumulate-stats = true
 
 [module/date]
 type = internal/date
 interval = 1
 date = %A, %d %B %Y
 time = %H:%M
-label = " %date% %time%"
+label = " %date% %time% "
+format-background = ${colors.background}
 
 [module/weather]
 type = custom/script
 exec = ~/.config/polybar/scripts/weather.sh
 interval = 600
 label-font = 2
-label-foreground = ${colors.background}
 format-background = ${colors.secondary}
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+label = " cpu: %percentage:2%% "
+label-background = ${colors.primary}
+
 
 [module/temperature]
 type = internal/temperature
@@ -140,7 +190,6 @@ format-warn = <label-warn>
 
 label = " temp: %temperature-c% "
 label-background = ${colors.primary}
-label-foreground = ${colors.background}
 label-warn = " temp: %temperature-c% "
 label-warn-foreground = ${colors.foreground}
 label-warn-background = #400
@@ -152,44 +201,35 @@ interval = 2
 format = <label>
 label = " mem: %percentage_used%% "
 label-background = ${colors.primary}
-label-foreground = ${colors.background}
 
-[module/battery]
-type = internal/battery
+#######################
+#### BOTTOM BAR
+#######################
 
-battery = BAT0
-adapter = AT0
-full-at = 98
+[bar/bottombar]
+padding-right = 0
+padding-left = 0
+override-redirect = true
+wm-restack = i3
+height = 40
 
-poll-interval = 98
 
+font-0 = ShureTechMono Nerd Font Mono:antialias=true:size=13;4
+font-1 = ShureTechMono Nerd Font Mono:antialias=true:size=25;5
+font-2 = ShureTechMono Nerd Font Mono:antialias=true:size=26;6
+font-3 = Terminus:size=32;9
 
-format-charging = "<animation-charging> <label-charging>"
-format-discharging = "<ramp-capacity> <label-discharging>"
-format-full = " <label-full>"
+bottom = true
+background = ${colors.transparent}
+foreground = ${colors.foreground}
 
-label-charging = %percentage%%
-label-discharging = %percentage%%
-label-full = %percentage%%
-
-animation-charging-0 = "  "
-animation-charging-1 = "  "
-animation-charging-2 = "  "
-animation-charging-3 = "  "
-animation-charging-4 = "  "
-animation-charging-framerate = 750
-
-ramp-capacity-0 = "  "
-ramp-capacity-1 = "  "
-ramp-capacity-2 = "  "
-ramp-capacity-3 = "  "
-;animation-discharging-1 = "  "
-;animation-discharging-0 = "  "
+enable-ipc = true
+modules-left = cava previous playpause next right-end-bottom-secondary left-end-top-background spotify right-end-bottom-background
+modules-right = left-end-bottom-primary bluetooth right-end-top-primary left-end-bottom-background volume right-end-top-background left-end-bottom-secondary bluetooth-profile
 
 [module/volume]
 type = internal/pulseaudio
-
-format-prefix = "   "
+format-volume-background = ${colors.background}
 format-volume = <ramp-volume> <label-volume>
 format-muted = <ramp-volume> <label-muted>
 format-muted-foreground = ${colors.alert}
@@ -197,31 +237,25 @@ format-muted-foreground = ${colors.alert}
 label-volume = "%percentage%% "
 label-muted = "%percentage%% "
 
-bar-volume-width = 10
-bar-volume-indicator = |
-bar-volume-fill = ─
-bar-volume-empty = ─
-
-ramp-volume-0 = "  "
-ramp-volume-1 = "  "
-ramp-volume-2 = "  "
+ramp-volume-0 = " 奄"
+ramp-volume-1 = " 奔"
+ramp-volume-2 = " 墳"
 
 click-left = pulsemixer --toggle-mute
 scroll-up = pulsemixer --change-volume +1
 scroll-down = pulsemixer --change-volume -1
-
 interval = 5
 
 [module/bluetooth]
 type = custom/script
+format-background = ${colors.primary}
 exec = ~/.config/polybar/scripts/system-bluetooth-bluetoothctl.sh
 tail = true
 click-left = ~/.config/polybar/scripts/system-bluetooth-bluetoothctl.sh --toggle &
 
 [module/bluetooth-profile]
 format-background = ${colors.secondary}
-label-foreground = ${colors.background}
-format-padding = 2
+format-padding = 1
 label-font = 2
 type = custom/script
 exec = ~/.config/polybar/scripts/bluetooth-profiles.sh current
@@ -231,7 +265,6 @@ click-left = ~/.config/polybar/scripts/bluetooth-profiles.sh switch
 [module/previous]
 type = custom/script
 format-background = ${colors.secondary}
-label-foreground = ${colors.background}
 label-font = 2
 interval = 86400
 format = "%{T3}<label>"
@@ -243,7 +276,6 @@ click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org
 [module/next]
 type = custom/script
 format-background = ${colors.secondary}
-label-foreground = ${colors.background}
 label-font = 2
 interval = 86400
 format = "%{T3}<label>"
@@ -259,7 +291,7 @@ click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org
 [module/playpause]
 type = custom/ipc
 format-background = ${colors.secondary}
-format-foreground = ${colors.background}
+format-font = 2
 ; Default
 hook-0 = echo ""
 ; Playing
@@ -267,8 +299,6 @@ hook-1 = echo ""
 ; Paused
 hook-2 = echo ""
 initial = 1
-format-underline = #1db954
-line-size = 1
 click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 
 [module/spotify]
@@ -279,19 +309,11 @@ initial = 1
 format-padding = 1
 line-size = 1
 click-left = i3-msg "[instance="spotify"] focus"
+format-background = ${colors.background}
 
-; ------------------------ END OF MODULES ----------
-
-
-screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = true
-
-[global/wm]
-;margin-top = 55
-;margin-bottom = 55
-
-; vim:ft=dosini
+[module/cava]
+type = custom/script
+exec = ~/.config/polybar/scripts/cava.py -b 24
+tail = true
+format-font = 4
+format-foreground = ${colors.secondary}

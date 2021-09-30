@@ -2,10 +2,8 @@
 
 source /home/josh/.cache/wal/colors.sh
 
-echo $color6
-
 i3lock \
---color 00000088 \
+--color 000000 \
 --bar-indicator \
 --bar-pos h \
 --bar-direction 1 \

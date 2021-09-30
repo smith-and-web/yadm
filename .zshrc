@@ -133,15 +133,14 @@ export PATH=$PATH:$HOME/bin
 if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
 #krew
-#export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 #python
 export PATH="${PATH}:${HOME}/.local/lib/python3.6/site-packages:/home/josh/.local/bin"
 
 # Import colorscheme from 'wal' asynchronously
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
-(cat ~/.cache/wal/sequences &)
+# (cat ~/.cache/wal/sequences &)
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
@@ -153,3 +152,8 @@ export PATH="$SPICETIFY_INSTALL:$PATH"
 # NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+# Rofi bin
+# Edit .zshrc and add this line
+export PATH=$HOME/.config/rofi/bin:$PATH
+

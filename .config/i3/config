@@ -173,6 +173,7 @@ for_window [class="(?i)virtualbox"] floating enable border none
 for_window [class="Xfburn"] floating enable
 for_window [class="Arandr"] floating enable border none
 for_window [class="Blueman-manager"] floating enable border none
+for_window [class="zoom"] floating enable
 
 
 # switch to workspace with urgent window automatically
@@ -285,28 +286,14 @@ exec --no-startup-id sh ~/.config/polybar/scripts/spotify/launchlistener.sh
 for_window [class="Spotify"] move to workspace $ws3
 for_window [class="Spotify"] floating enable border none resize set 1400 px 950 px
 for_window [class="Spotify"] move position 50 px 100 px
-## Cava
-exec_always --no-startup-id $HOME/.config/i3/cava.sh
-for_window [instance="cava"] move to workspace $ws3
-for_window [instance="cava"] floating enable border none resize set 1400 px 350 px
-for_window [instance="cava"] move position 50 px 1100 px
 ## Transmission
 exec --no-startup-id transmission-gtk
 assign [class="Transmission-gtk"] workspace $ws3
 for_window [class="Transmission-gtk"] floating enable border none resize set 1400 px 570 px
 for_window [class="Transmission-gtk"] move position 50 px 1500 px
-##Ranger
-exec --no-startup-id urxvt -name mediaranger -e $SHELL -c ranger /home/josh/Media/Media/
-assign [instance="mediaranger"] $ws3
-for_window [instance="mediaranger"] floating enable border none resize set 840 px 970 px
-for_window [instance="mediaranger"] move position 1500 px 1100 px
-## Plex
-exec --no-startup-id google-chrome --app="http://plex:32400"
-for_window [instance="plex"] move to workspace $ws3
-for_window [instance="plex"] floating enable border none resize set 1400 px 950 px
-for_window [instance="plex"] move position 2380 px 100 px
+
 
 # Autostart applications
 exec --no-startup-id picom -b
-exec_always --no-startup-id $HOME/.config/i3/bg.sh
+#exec_always --no-startup-id $HOME/.config/i3/bg.sh
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh

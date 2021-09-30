@@ -5,8 +5,6 @@ print_bytes() {
         bytes="0 kB/s"
     elif [ "$1" -lt 1000000 ]; then
         bytes="$(echo "$1/1000" | bc -l | LANG=C xargs printf "%.f\n") kB/s"
-    else
-        bytes="$(echo "$1/1000000" | bc -l | LANG=C xargs printf "%.1f\n") MB/s"
     fi
 
     echo "$bytes"
