@@ -294,6 +294,7 @@ for_window [class="Transmission-gtk"] move position 50 px 1500 px
 
 
 # Autostart applications
+exec_always --no-startup-id nm-applet -b
 exec --no-startup-id picom -b
 #exec_always --no-startup-id $HOME/.config/i3/bg.sh
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
