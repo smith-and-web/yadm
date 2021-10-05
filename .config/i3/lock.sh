@@ -2,7 +2,9 @@
 
 source /home/josh/.cache/wal/colors.sh
 
-i3lock \
+dunstctl set-paused true
+
+i3lock -n \
 --color 000000 \
 --bar-indicator \
 --bar-pos h \
@@ -38,3 +40,5 @@ i3lock \
 --date-font "ShureTechMono Nerd Font Mono" \
 --layout-font "ShureTechMono Nerd Font Mono" \
 --screen 1
+
+dunstctl set-paused false
