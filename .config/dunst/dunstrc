@@ -1,5 +1,5 @@
 [colors]
-	background = "#7982a9"
+	background = "#8EB0FE"
 	foreground = "#010101"
 
 [global]
@@ -8,25 +8,20 @@
     monitor = 0
     follow = mouse
 
-    geometry = "540x5-10+32"
+    geometry = "540x5+1480+45"
     indicate_hidden = yes
-    shrink = yes
-    transparency = 0
+    shrink = no
     notification_height = 0
-    separator_height = 3
     padding = 12
     horizontal_padding = 12
-    frame_width = 3
-
-    frame_color = "#de65ff"
-    separator_color = auto
     sort = yes
     idle_threshold = 120
+    separator_color = "#00000000"
+    separator_height = 15
+    frame_width = 0
 
     ### Text ###
-    font = go mono 9
-    line_height = 0
-
+    font = ShureTechMono Nerd Font Mono 13
     markup = full
 
     # The format of the message.  Possible variables are:
@@ -39,7 +34,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "<b>%s </b>\n%b"
+    format = "<b>%a</b>\n%s\n%b"
     alignment = left
     show_age_threshold = 60
     word_wrap = yes
@@ -52,7 +47,7 @@
     ### Icons ###
     icon_position = left
     max_icon_size = 64
-    icon_path = .icons/flattrcolor/status/24:.icons/flattrcolor/devices/48:.icons/flattrcolor/apps/scalable:.icons/flattrcolor/actions/scalable
+    icon_path = .icons/oomox-colors-oomox-5/status/24:.icons/oomox-colors-oomox-5/devices/48:.icons/oomox-colors-oomox-5/apps/scalable:.icons/oomox-colors-oomox-5/actions/scalable
 
     ### History ###
     sticky_history = yes
@@ -76,17 +71,17 @@
     context = ctrl+shift+period
 
 [urgency_low]
-    background = "#7982a9"
+    background = "#8EB0FE"
     foreground = "#010101"
     timeout = 10
 
 [urgency_normal]
-    background = "#7982a9"
+    background = "#8EB0FE"
     foreground = "#010101"
     timeout = 10
 
 [urgency_critical]
-    background = "#7982a9"
+    background = "#8EB0FE"
     foreground = "#010101"
-    frame_color = "#1258af"
+    frame_color = "#DEA2F4"
     timeout = 0
