@@ -261,7 +261,7 @@ for_window [class="Code" title="\bHFTI\b.\W\bWorkspace\b\W"] move to workspace $
 
 #rambox
 exec --no-startup-id snap run ramboxpro
-for_window [class="rambox"] move to workspace $ws2
+for_window [class="ramboxpro"] move to workspace $ws2
 
 # Chrome profiles
 exec --no-startup-id google-chrome

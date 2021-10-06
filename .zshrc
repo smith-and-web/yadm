@@ -181,6 +181,4 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 
-zinit ice wait:2 lucid extract"" from"gh-r" as"command" mv"taskwarrior-tui* -> tt"
-zinit load kdheepak/taskwarrior-tui
 alias tt="taskwarrior-tui"

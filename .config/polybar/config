@@ -100,7 +100,7 @@ font-0 = ShureTechMono Nerd Font Mono:antialias=true:size=13;3
 font-1 = Weather Icons:size=12;1
 font-2 = ShureTechMono Nerd Font Mono:antialias=true:size=26;6
 
-modules-left = i3 right-end-bottom-background left-end-top-background host right-end-bottom-background left-end-top-background uptime right-end-bottom-background left-end-top-secondary dunst right-end-bottom-secondary
+modules-left = i3 right-end-bottom-background left-end-top-background host right-end-bottom-background left-end-top-background uptime right-end-bottom-background left-end-top-secondary dunst right-end-bottom-secondary left-end-top-primary vpn-status right-end-bottom-primary
 modules-center = left-end-top-background title right-end-top-background
 modules-right = left-end-bottom-secondary weather right-end-top-secondary left-end-bottom-background date right-end-top-background left-end-bottom-background network right-end-top-background left-end-bottom-primary cpu temperature memory right-end-top-primary left-end-bottom-secondary
 
@@ -139,6 +139,7 @@ ws-icon-8 = 9: misc;
 type=custom/script
 exec = echo " $(whoami)@$(hostname) "
 format-background = ${colors.background}
+interval = 500
 
 [module/uptime]
 type=custom/script
@@ -148,8 +149,9 @@ interval = 60
 
 [module/vpn-status]
 type = custom/script
-exec = ~/polybar-scripts/vpn-status.sh
-interval = 10
+format-background = ${colors.primary}
+exec = ~/.config/polybar/scripts/vpn-status.sh
+interval = 1
 
 [module/dunst]
 type = custom/ipc
@@ -168,7 +170,7 @@ format-padding = 1
 [module/network]
 type = internal/network
 interface = enp0s31f6
-interval = 3.0
+interval = 3
 format-connected = "<label-connected> "
 format-connected-background = ${colors.background}
 label-connected = " %downspeed:9%     祝%upspeed:9%"
@@ -206,6 +208,7 @@ type = internal/temperature
 thermal-zone = 0
 warn-temperature = 80
 hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input
+interval = 1
 format = <label>
 format-warn = <label-warn>
 
@@ -323,18 +326,15 @@ initial = 1
 click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 
 [module/spotify]
-type = custom/ipc
-hook-0 = echo "Start the music..."
-hook-1 = python3 ~/.config/polybar/scripts/spotify/spotify_status.py
-initial = 1
-format-padding = 1
-line-size = 1
-click-left = i3-msg "[instance="spotify"] focus"
-format-background = ${colors.background}
+type = custom/script
+interval = 1
+format = <label>
+label-background = ${colors.background}
+exec = python3 ~/.config/polybar/scripts/spotify.py -f '{artist}: {song}'
 
 [module/cava]
 type = custom/script
-exec = ~/.config/polybar/scripts/cava.py -b 24
+exec = ~/.config/polybar/scripts/cava.py -b 20
 tail = true
 format-font = 4
 format-foreground = ${colors.secondary}
