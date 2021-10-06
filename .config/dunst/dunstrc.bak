@@ -119,7 +119,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "<b>%a</b>\n%s\n%b"
+    format = "<b>%s</b>\n%b"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
@@ -302,11 +302,9 @@
 
 [slack]
     appname="Slack"
-    new_icon="slack"
 
 [discord]
-    appname="Discord"
-    new_icon="discord"
+    appname="discord"
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.

@@ -244,10 +244,8 @@ bindsym XF86MonBrightnessDown exec light -U 5;
 bindsym $mod+p move workspace to output right
 
 # Window assignments
-# Slack
-exec --no-startup-id slack
+# discord
 exec --no-startup-id discord
-assign [class="Slack"] workspace $ws1
 assign [class="discord"] workspace $ws1
 
 #K8s
@@ -261,13 +259,9 @@ for_window [class="Code" title=".\bDash\b.\W\bWorkspace\b\W"] move to workspace 
 for_window [class="Code" title="\bKoi\b.\W\bWorkspace\b\W"] move to workspace $ws6
 for_window [class="Code" title="\bHFTI\b.\W\bWorkspace\b\W"] move to workspace $ws7
 
-# Thunderbird
-# exec --no-starup-id Thunderbird
-# for_window [class="Thunderbird"] moce to workspace $ws2
-
-# Joplin Tasks
-exec --no-startup-id urxvt -name joplin -e $SHELL -c joplin&
-for_window [instance="joplin"] move to workspace $ws2
+#rambox
+exec --no-startup-id snap run ramboxpro
+for_window [class="rambox"] move to workspace $ws2
 
 # Chrome profiles
 exec --no-startup-id google-chrome

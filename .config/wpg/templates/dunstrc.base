@@ -1,5 +1,5 @@
 [colors]
-	background = "{color5}"
+	background = "{color6}"
 	foreground = "{color15}"
 
 [global]
@@ -34,7 +34,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "<b>%a</b>\n%s\n%b"
+    format = "<b>%s</b>\n%b"
     alignment = left
     show_age_threshold = 60
     word_wrap = yes
@@ -42,7 +42,7 @@
     ignore_newline = no
     stack_duplicates = true
     hide_duplicate_count = false
-    show_indicators = yes
+    show_indicators = no
 
     ### Icons ###
     icon_position = left
@@ -71,17 +71,17 @@
     context = ctrl+shift+period
 
 [urgency_low]
-    background = "{color5}"
+    background = "{color6}"
     foreground = "{color15}"
     timeout = 10
 
 [urgency_normal]
-    background = "{color5}"
+    background = "{color6}"
     foreground = "{color15}"
     timeout = 10
 
 [urgency_critical]
-    background = "{color5}"
+    background = "{color6}"
     foreground = "{color15}"
-    frame_color = "{color6}"
+    frame_color = "{color5}"
     timeout = 0
