@@ -1,4 +1,4 @@
-URxvt.font: xft:ShureTechMono Nerd Font Mono:size=10.5
+URxvt.font: xft:ShureTechMono Nerd Font Mono:size=7.5
 URxvt.depth:                      24
 URxvt*scrollBar:                  false
 URxvt*cursorBlink:                false

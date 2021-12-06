@@ -8,7 +8,7 @@
     monitor = 0
     follow = mouse
 
-    geometry = "540x5+1480+45"
+    geometry = "540x5+880+34"
     indicate_hidden = yes
     shrink = no
     notification_height = 0
@@ -21,7 +21,7 @@
     frame_width = 0
 
     ### Text ###
-    font = ShureTechMono Nerd Font Mono 13
+    font = ShureTechMono Nerd Font Mono 7
     markup = full
 
     # The format of the message.  Possible variables are:
