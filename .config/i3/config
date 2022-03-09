@@ -1,4 +1,4 @@
-set $mod Mod1
+set $mod Mod4
 
 # workspaces
 set $ws1 "1: chat"
@@ -18,15 +18,17 @@ bindsym $mod+u border none
 bindsym $mod+y border pixel 1
 bindsym $mod+n border normal
 
-#font xft:URWGothic-Book 11
 floating_modifier $mod
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec --no-startup-id /home/josh/.config/rofi/applets/menu/apps.sh
 
 # Window kill command
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id rofi -show drun ssh -config /home/josh/.config/rofi/config.rasi
+bindsym $mod+d exec --no-startup-id /home/josh/.config/rofi/launchers/misc/launcher.sh
+
+#screenshot
+bindsym $mod+Shift+s exec --no-startup-id /home/josh/.config/rofi/applets/menu/screenshot.sh
 
 # change focus
 bindsym $mod+j focus left
@@ -56,8 +58,8 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
-bindsym $mod+h split h;exec notify-send 'tile horizontally'
-bindsym $mod+v split v;exec notify-send 'tile vertically'
+bindsym $mod+h split h;exec dunstify 'tile horizontally'
+bindsym $mod+v split v;exec dunstify 'tile vertically'
 bindsym $mod+q split toggle
 
 # toggle fullscreen mode for the focused container
@@ -75,7 +77,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
  
 # toggle sticky
-bindsym $mod+Shift+s sticky toggle
+#bindsym $mod+Shift+s sticky toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -99,15 +101,15 @@ workspace $ws5 output primary
 workspace $ws6 output primary
 workspace $ws7 output primary
 workspace $ws8 output primary
-workspace $ws9 output DVI-D-0
+workspace $ws9 output eDP-1
 
 # Gaps
 gaps inner 10
 gaps outer 0
 gaps left 0
 gaps right 0
-gaps top 25
-gaps bottom 25
+gaps top 40
+gaps bottom 40
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -173,8 +175,9 @@ for_window [class="(?i)virtualbox"] floating enable border none
 for_window [class="Xfburn"] floating enable
 for_window [class="Arandr"] floating enable border none
 for_window [class="Blueman-manager"] floating enable border none
-for_window [class="zoom"] floating enable
+for_window [class="zoom"] floating enable border none
 for_window [class="Bitwarden"] floating enable border none
+for_window [instance="crx_kjgfgldnnfoeklkmfkjfagphfepbbdan"] floating enable border none
 
 
 # switch to workspace with urgent window automatically
@@ -186,21 +189,23 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-# Set shut down, restart and locking features
-bindsym $mod+0 mode "$mode_system"
-set $mode_system (l)ock, (e)xit, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
-mode "$mode_system" {
-    bindsym l exec --no-startup-id /home/josh/.config/i3/lock.sh, mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+bindsym $mod+0 exec --no-startup-id /home/josh/.config/rofi/applets/menu/powermenu.sh
 
-    # exit system mode: "Enter" or "Escape"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
+# Set shut down, restart and locking features
+#bindsym $mod+0 mode "$mode_system"
+#set $mode_system (l)ock, (e)xit, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+#mode "$mode_system" {
+#    bindsym l exec --no-startup-id /home/josh/.config/i3/lock.sh, mode "default"
+#    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+#    bindsym e exec --no-startup-id i3exit logout, mode "default"
+#    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+#    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+#    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+#
+#    # exit system mode: "Enter" or "Escape"
+#    bindsym Return mode "default"
+#    bindsym Escape mode "default"
+#}
 
 # Resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
@@ -226,6 +231,16 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
+
+# GNOME stuff
+exec --no-startup-id /usr/lib/gsd-xsettings
+exec_always --no-startup-id gnome-power-manager
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id gnome-flashback
+
+# xinput things
+exec --no-startup-id xinput set-prop 18 "libinput Tapping Enabled" 1
+
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
@@ -238,15 +253,14 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # Backlight
-bindsym XF86MonBrightnessUp exec light -A 5; 
-bindsym XF86MonBrightnessDown exec light -U 5;
+bindsym XF86MonBrightnessUp exec bright +; 
+bindsym XF86MonBrightnessDown exec bright -;
 
 # Moving workspaces between screens 
 bindsym $mod+p move workspace to output right
 
 # Window assignments
 # discord
-exec --no-startup-id discord
 assign [class="discord"] workspace $ws1
 
 #K8s
@@ -260,10 +274,6 @@ for_window [class="Code" title=".\bDash\b.\W\bWorkspace\b\W"] move to workspace 
 for_window [class="Code" title="\bKoi\b.\W\bWorkspace\b\W"] move to workspace $ws6
 for_window [class="Code" title="\bHFTI\b.\W\bWorkspace\b\W"] move to workspace $ws7
 
-#rambox
-exec --no-startup-id snap run ramboxpro
-for_window [class="ramboxpro"] move to workspace $ws1
-
 #simplenote
 exec --no-startup-id /opt/Simplenote/simplenote
 for_window [class="Simplenote"] move to workspace $ws2
@@ -272,16 +282,6 @@ for_window [class="Simplenote"] move to workspace $ws2
 exec --no-startup-id urxvt -name taskwarrior -e $SHELL -c taskwarrior-tui
 assign [instance="taskwarrior"] workspace $ws2
 
-# Chrome profiles
-exec --no-startup-id google-chrome
-exec --no-startup-id google-chrome --user-data-dir=/home/josh/.config/google-chrome-dash --class="Chrome-Dash"
-exec --no-startup-id google-chrome --user-data-dir=/home/josh/.config/google-chrome-koi --class="Chrome-Koi"
-exec --no-startup-id google-chrome --user-data-dir=/home/josh/.config/google-chrome-hfti --class="Chrome-HFTI"
-for_window [class="Google-chrome"] move to workspace $ws8
-for_window [class="Chrome-Dash"] move to workspace $ws5
-for_window [class="Chrome-Koi"] move to workspace $ws6
-for_window [class="Chrome-HFTI"] move to workspace $ws7
-
 # Media
 ## Spotify
 exec --no-startup-id spotify
@@ -289,16 +289,11 @@ exec --no-startup-id sh ~/.config/polybar/scripts/spotify/launchlistener.sh
 for_window [class="Spotify"] move to workspace $ws3
 for_window [class="Spotify"] floating enable border none resize set 1400 px 950 px
 for_window [class="Spotify"] move position 50 px 100 px
-## Transmission
-exec --no-startup-id transmission-gtk
-assign [class="Transmission-gtk"] workspace $ws3
-for_window [class="Transmission-gtk"] floating enable border none resize set 1400 px 570 px
-for_window [class="Transmission-gtk"] move position 50 px 1500 px
-
 
 # Autostart applications
+exec --no-startup-id libinput-gestures-setup start
+exec --no-startup-id nitrogen --restore
 exec_always --no-startup-id nm-applet -b
-exec nitrogen --restore
-exec --no-startup-id picom -b
+exec --no-startup-id picom -b --experimental-backends
 #exec_always --no-startup-id $HOME/.config/i3/bg.sh
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh

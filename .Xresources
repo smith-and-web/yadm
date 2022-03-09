@@ -1,4 +1,4 @@
-URxvt.font: xft:ShureTechMono Nerd Font Mono:size=7.5
+URxvt.font: xft:ShureTechMono Nerd Font Mono:size=14.5
 URxvt.depth:                      24
 URxvt*scrollBar:                  false
 URxvt*cursorBlink:                false
@@ -23,6 +23,7 @@ URxvt.keysym.Shift-Control-Up:    \033[1;6A
 URxvt.keysym.Control-Down:        \033[1;5B
 URxvt.keysym.Shift-Control-Down:  \033[1;6B
 
+Xft.dpi: 96
 Xft.antialias: 1
 Xft.hinting: 0
 Xft.hintstlye: hintnone

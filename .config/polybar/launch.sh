@@ -1,6 +1,7 @@
 #!/bin/env sh
 
 killall -q polybar
+killall -q cava
 
 # Wait until the processes have been shut down
 while pgrep -u josh -x polybar >/dev/null; do 

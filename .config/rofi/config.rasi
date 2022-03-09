@@ -2,5 +2,5 @@
 
 configuration {
   show-icons:         true;
-  icon-theme:         "oomox-colors-oomox-3";
+  icon-theme:         "Papirus";
 }

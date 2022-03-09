@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-wpg -nrsL 'glass-clear-sky-transparent-blue-sky-pink-rocks-3840x2160-6557.jpg' 'glass-clear-sky-transparent-blue-sky-pink-rocks-3840x2160-6557.jpg'
+wpg -nrs 'astronaut-space-suit-snow-orange-illustration-photo-3840x2160-6882.jpg' 'astronaut-space-suit-snow-orange-illustration-photo-3840x2160-6882.jpg'

@@ -7,7 +7,7 @@ import sys
 import tempfile
 
 if len(sys.argv) > 1 and sys.argv[1] == '--subproc':
-    ramp_list = [' ', '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█']
+    ramp_list = ['▁', '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█']
     ramp_list.extend(
         f'%{{F#{color.strip(" #")}}}█%{{F-}}'
         for color in sys.argv[2].split(',')
@@ -53,7 +53,7 @@ with open(cava_conf, 'w') as cava_conf_file:
        f'framerate={opts.framerate}\n'
        f'bars={opts.bars}\n'
         'autosense=1\n'
-        'sensitivity=200\n'
+        'sensitivity=100\n'
         '[input]\n'
         'sample_rate=44100\n'
         '[output]\n'
