@@ -159,3 +159,6 @@ export PATH=$HOME/.config/rofi/bin:$PATH
 
 alias tt="taskwarrior-tui"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#solana tools
+export PATH="/home/josh/.local/share/solana/install/active_release/bin:$PATH"

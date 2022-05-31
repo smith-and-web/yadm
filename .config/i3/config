@@ -297,3 +297,4 @@ exec_always --no-startup-id nm-applet -b
 exec --no-startup-id picom -b --experimental-backends
 #exec_always --no-startup-id $HOME/.config/i3/bg.sh
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/i3/start-g.sh

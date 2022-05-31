@@ -246,8 +246,8 @@ background = ${colors.transparent}
 foreground = ${colors.foreground}
 
 enable-ipc = true
-modules-left = cava previous playpause next right-end-bottom-secondary left-end-top-secondary spotify right-end-bottom-secondary left-end-top-secondary dunst right-end-bottom-secondary
-modules-right = left-end-bottom-secondary bluetooth right-end-top-secondary left-end-bottom-secondary volume right-end-top-secondary left-end-bottom-secondary date right-end-top-secondary left-end-bottom-secondary bluetooth-profile
+modules-left = dunst previous playpause next spotify right-end-bottom-secondary
+modules-right = left-end-bottom-secondary bluetooth bluetooth-profile volume date
 
 [module/volume]
 type = internal/pulseaudio
@@ -340,18 +340,11 @@ format = <label>
 label-background = ${colors.secondary}
 exec = python3 ~/.config/polybar/scripts/spotify.py -f '{artist}: {song}'
 
-[module/cava]
-type = custom/script
-exec = ~/.config/polybar/scripts/cava.py -b 8
-tail = true
-format-font = 4
-format-foreground = ${colors.secondary}
-
 [module/dunst]
 type = custom/ipc
 initial = 1
 format-background = ${colors.secondary}
 format-font = 3
 
-hook-0 = echo "%{A1:dunstctl set-paused true && polybar-msg hook dunst 2:}%{A}" &
-hook-1 = echo "%{A1:dunstctl set-paused false && polybar-msg hook dunst 1:}%{F#ff2200}%{F-}%{A}" &
+hook-0 = echo " %{A1:dunstctl set-paused true && polybar-msg hook dunst 2:}%{A}" &
+hook-1 = echo " %{A1:dunstctl set-paused false && polybar-msg hook dunst 1:}%{F#ff2200}%{F-}%{A}" &

@@ -7,7 +7,7 @@ import sys
 import tempfile
 
 if len(sys.argv) > 1 and sys.argv[1] == '--subproc':
-    ramp_list = ['▁', '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█']
+    ramp_list = ['▁ ', '▁ ', '▂ ', '▃ ', '▄ ', '▅ ', '▆ ', '▇ ', '█ ']
     ramp_list.extend(
         f'%{{F#{color.strip(" #")}}}█%{{F-}}'
         for color in sys.argv[2].split(',')
@@ -41,7 +41,7 @@ conf_channels = ''
 if opts.channels != 'stereo':
     conf_channels = (
         'channels=mono\n'
-       f'mono_option={opts.channels}'
+        f'mono_option={opts.channels}'
     )
 
 conf_ascii_max_range = 20
@@ -52,6 +52,8 @@ with open(cava_conf, 'w') as cava_conf_file:
         '[general]\n'
        f'framerate={opts.framerate}\n'
        f'bars={opts.bars}\n'
+        'bar_width=1\n'
+        'bar_spacing=1\n'
         'autosense=1\n'
         'sensitivity=100\n'
         '[input]\n'
@@ -60,7 +62,7 @@ with open(cava_conf, 'w') as cava_conf_file:
         'method=raw\n'
         'data_format=ascii\n'
        f'ascii_max_range={conf_ascii_max_range}\n'
-        'bar_delimiter=32'
+        'bar_delimiter=32\n'
         + conf_channels
     )
 
